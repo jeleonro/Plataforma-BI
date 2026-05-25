@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma BI + ML</title>
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>PLATAFORMA BI + ML INTEGRADA</h1>
+        <p>Análisis de Empleabilidad de Egresados</p>
+    </header>
+
+    <main>
+
+        <!-- PIPELINE -->
+        <section class="pipeline meme">
+
+            <div class="module fuente active" onclick="mostrarModulo('fuente', this)">
+                <i class="fa-solid fa-database"></i>
+                <h3>Fuentes de Datos</h3>
+            </div>
+
+            <div class="arrow">➜</div>
+
+            
+            <div class="module staging" onclick="mostrarModulo('staging', this)">
+                <i class="fa-solid fa-filter-circle-check"></i>
+                <h3>Staging</h3>
+            </div>
+
+            <div class="arrow">➜</div>
+
+
+            <div class="module etl" onclick="mostrarModulo('etl', this)">
+                <i class="fa-solid fa-gears"></i>
+                <h3>ETL</h3>
+            </div>
+
+            <div class="arrow">➜</div>
+
+            <div class="module dw" onclick="mostrarModulo('dw', this)">
+                <i class="fa-solid fa-server"></i>
+                <h3>Data Warehouse</h3>
+            </div>
+
+            <div class="arrow">➜</div>
+
+            <div class="module ia" onclick="mostrarModulo('ia', this)">
+                <i class="fa-solid fa-brain"></i>
+                <h3>IA</h3>
+            </div>
+
+            <div class="arrow">➜</div>
+
+            <div class="module semantic" onclick="mostrarModulo('semantic', this)">
+                <i class="fa-solid fa-chart-line"></i>
+                <h3>Capa Semántica</h3>
+            </div>
+
+            <div class="arrow">➜</div>
+
+            <div class="module bi" onclick="mostrarModulo('bi', this)">
+                <i class="fa-solid fa-chart-pie"></i>
+                <h3>Visualización BI</h3>
+            </div>
+
+        </section>
+
+        <!-- PANEL DINÁMICO -->
+        <section id="panel">
+            <h2>Fuentes de Datos</h2>
+            <p>
+                Este módulo permite cargar datos
+                desde archivos CSV o XLSX para iniciar
+                el pipeline BI.
+            </p>
+        </section>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+
+</body>
+
+</html>
