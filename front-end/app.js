@@ -58,9 +58,17 @@ function mostrarModulo(modulo, elemento) {
 
         bi: `
             <h2>Fase 6 · Visualización BI</h2>
-            <p class="panel-desc">Dashboard con gráficos interactivos del pipeline completo.</p>
-            <button class="btn-upload" onclick="runDashboard()">Cargar Dashboard</button>
-            <div id="dashboard-panel"></div>`,
+            <p class="panel-desc">Dashboard interactivo embebido desde Power BI.</p>
+
+            <div class="pbi-container">
+                <iframe
+                    title="Dashboard Empleabilidad Egresados"
+                    src="https://app.powerbi.com/view?r=eyJrIjoiNjM5YTQ2NjYtZGIxYi00YTA5LWE3MjMtYzM4ZGY0NGZkOTRhIiwidCI6ImJlNmJlY2YxLTRmZWYtNDM4OC1hMjFjLTcxODQ1ODRkMzhjYiIsImMiOjR9"
+                    frameborder="0"
+                    allowFullScreen="true">
+                </iframe>
+            </div>
+        `,
     };
 
     panel.innerHTML = vistas[modulo] ?? `<h2>${modulo}</h2>`;

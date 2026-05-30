@@ -451,3 +451,17 @@ td{ border:1px solid #ddd; padding:8px; }
     .kpi-grid-dash{ grid-template-columns:1fr 1fr; }
     .charts-row-3,.charts-row-2{ grid-template-columns:1fr; }
 }
+
+.pbi-container {
+    width: 100%;
+    height: 75vh;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+}
+
+.pbi-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
