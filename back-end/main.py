@@ -15,6 +15,11 @@ app = FastAPI()
 # CORS — permite llamadas desde el frontend
 # ==========================
 
+
+@app.get("/")
+async def root():
+    return {"status": "ok", "api": "BI Empleabilidad"}
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
