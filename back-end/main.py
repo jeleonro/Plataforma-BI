@@ -4,7 +4,7 @@ import pandas as pd
 
 from validation import validar_dataframe
 from database import engine
-from etl import ejecutar_etl
+from MachineLearning.etl import ejecutar_etl
 from ia import ejecutar_ia
 from semantic import generar_kpis
 from dashboard import dashboard_data
