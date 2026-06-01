@@ -89,7 +89,7 @@ async function subirArchivo() {
         <i class="fa-solid fa-spinner fa-spin"></i><p>Procesando archivo...</p>
     </div>`;
     try {
-        const response = await fetch("http://localhost:8000/upload", { method:"POST", body:formData });
+        const response = await fetch("https://plataforma-bi-production.up.railway.app/upload", { method:"POST", body:formData });
         const data = await response.json();
         if (!data.success) throw new Error(data.message);
         let html = `<h3 style="margin:16px 0 8px">${data.rows} registros encontrados</h3>`;
@@ -129,7 +129,7 @@ async function ejecutarValidacion() {
     }
     el.innerHTML = `<div class="loading-card"><i class="fa-solid fa-spinner fa-spin"></i><div><p>Revisando dataset...</p><small>✓ columnas &nbsp; ✓ tipos &nbsp; ✓ nulos &nbsp; ✓ duplicados</small></div></div>`;
     try {
-        const response = await fetch("http://127.0.0.1:8000/validate", { method:"POST" });
+        const response = await fetch("https://plataforma-bi-production.up.railway.app/validate", { method:"POST" });
         const data = await response.json();
         if (!data.success) throw new Error(data.message);
         if (data.valid) {
@@ -157,7 +157,7 @@ async function ejecutarETL() {
     }
     el.innerHTML = `<div class="loading-card"><i class="fa-solid fa-gears fa-spin"></i><div><h3>Ejecutando ETL</h3><p>EXTRACT ✓<br>TRANSFORM ✓<br>LOAD ✓</p></div></div>`;
     try {
-        const response = await fetch("http://127.0.0.1:8000/etl", { method:"POST" });
+        const response = await fetch("https://plataforma-bi-production.up.railway.app/etl", { method:"POST" });
         const data = await response.json();
         if (!data.success) throw new Error(data.message);
         el.innerHTML = `
@@ -264,7 +264,7 @@ async function ejecutarIA() {
     }
     el.innerHTML = `<div class="loading-card"><i class="fa-solid fa-brain fa-spin"></i><div><h3>Entrenando IA...</h3><p>preparando datos<br>entrenando modelo<br>evaluando precisión</p></div></div>`;
     try {
-        const response = await fetch("http://127.0.0.1:8000/ia", { method:"POST" });
+        const response = await fetch("https://plataforma-bi-production.up.railway.app/ia", { method:"POST" });
         const data = await response.json();
         if (!data.success) throw new Error(data.message);
         const imp = data.data.importancias;
@@ -299,7 +299,7 @@ async function ejecutarSemantica() {
     }
     el.innerHTML = `<div class="loading-card"><i class="fa-solid fa-chart-line fa-spin"></i><p>Calculando KPIs...</p></div>`;
     try {
-        const response = await fetch("http://127.0.0.1:8000/semantic", { method:"POST" });
+        const response = await fetch("https://plataforma-bi-production.up.railway.app/semantic", { method:"POST" });
         const data = await response.json();
         if (!data.success) throw new Error(data.message);
         const d = data.data;
@@ -350,7 +350,7 @@ async function runDashboard() {
     </div>`;
 
     try {
-        const res  = await fetch("http://127.0.0.1:8000/dashboard", { method:"POST" });
+        const res  = await fetch("https://plataforma-bi-production.up.railway.app/dashboard", { method:"POST" });
         const resp = await res.json();
         if (!resp.success) throw new Error(resp.message);
         renderDashboard(resp.data);
