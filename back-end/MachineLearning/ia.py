@@ -7,7 +7,6 @@ from sklearn.metrics import r2_score, mean_absolute_error
 
 
 def ejecutar_ia():
-
     # ======================
     # CARGAR TABLAS
     # ======================
@@ -153,6 +152,16 @@ def ejecutar_ia():
     )
 
     print("Tablas de predicciones creadas correctamente.")
+    importancias = {
+    columna: float(valor)
+    for columna, valor in zip(X.columns, modelo.feature_importances_)
+    }
+
+    return {
+        "score_r2": round(r2_score(y_test, pred), 4),
+        "error_mae": round(mean_absolute_error(y_test, pred), 4),
+        "importancias": importancias
+    }
 
 
 if __name__ == "__main__":
