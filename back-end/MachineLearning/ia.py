@@ -155,5 +155,5 @@ def ejecutar_ia():
     print("Tablas de predicciones creadas correctamente.")
 
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     ejecutar_ia()
