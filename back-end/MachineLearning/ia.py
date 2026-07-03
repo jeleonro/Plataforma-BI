@@ -3,7 +3,8 @@ from database import engine
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import r2_score, mean_absolute_error, accuracy_score
+from sklearn.metrics import r2_score, mean_absolute_error
+
 
 def ejecutar_ia():
 
@@ -38,7 +39,9 @@ def ejecutar_ia():
     y = df["promedio"]
 
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.2, random_state=42
+        X, y,
+        test_size=0.2,
+        random_state=42
     )
 
     # ==========================================
@@ -56,7 +59,12 @@ def ejecutar_ia():
         "Promedio_Predicho": pred
     })
 
-    promedio.to_csv("predicciones_promedio.csv", index=False)
+    promedio.to_sql(
+        "predicciones_promedio",
+        con=engine,
+        if_exists="replace",
+        index=False
+    )
 
     print("R2:", r2_score(y_test, pred))
     print("MAE:", mean_absolute_error(y_test, pred))
@@ -73,7 +81,12 @@ def ejecutar_ia():
 
     demanda["Demanda_Predicha"] = demanda["Cantidad_Egresados"]
 
-    demanda.to_csv("predicciones_demanda.csv", index=False)
+    demanda.to_sql(
+        "predicciones_demanda",
+        con=engine,
+        if_exists="replace",
+        index=False
+    )
 
     # ==========================================
     # 3. SALARIO ESTIMADO
@@ -101,7 +114,12 @@ def ejecutar_ia():
         "Salario_Predicho": salario_pred
     })
 
-    salario.to_csv("predicciones_salario.csv", index=False)
+    salario.to_sql(
+        "predicciones_salario",
+        con=engine,
+        if_exists="replace",
+        index=False
+    )
 
     # ==========================================
     # 4. EMPLEABILIDAD
@@ -127,10 +145,15 @@ def ejecutar_ia():
         "Probabilidad_Empleo": prob * 100
     })
 
-    empleo.to_csv("predicciones_empleabilidad.csv", index=False)
+    empleo.to_sql(
+        "predicciones_empleabilidad",
+        con=engine,
+        if_exists="replace",
+        index=False
+    )
 
-    print("Archivos generados correctamente.")
+    print("Tablas de predicciones creadas correctamente.")
 
 
-if __name__ == "__main__":
+if _name_ == "_main_":
     ejecutar_ia()
